@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
 using EduX_API.Repositories;
+using EduX_API.Utilis;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -82,6 +83,11 @@ namespace EduX_API.Controllers
         [HttpPost]
         public IActionResult Post([FromForm] Usuario usuario)
         {
+            //Criptografar a senha 
+            //SALT - será as 5 primeiras letras do e-mail do usuário
+            usuario.Senha = Crypto.Criptografar(usuario.Senha, usuario.Email.Substring(0, 5));
+
+
             try
             {
                 //Adicionar um usuário
@@ -90,7 +96,7 @@ namespace EduX_API.Controllers
                 //Retorna OK e os usuários
                 return Ok(usuario);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Caso ocorra um erro retorna uma mensagem de erro
                 return BadRequest(ex.Message);

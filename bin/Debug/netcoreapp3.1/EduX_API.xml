@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EduX_API</name>
+    </assembly>
+    <members>
+        <member name="T:EduX_API.Domains.Categoria">
+            <summary>
+            Definição da classe Categoria
+            </summary>
+        </member>
+        <member name="M:EduX_API.Domains.Curtida.#ctor">
+            <summary>
+            Criar novos ID's
+            </summary>
+        </member>
+        <member name="M:EduX_API.Domains.Instituicao.#ctor">
+            <summary>
+            Define a classe instituicao
+            </summary>
+        </member>
+        <member name="T:EduX_API.Domains.Usuario">
+            <summary>
+            Define a classe usuário
+            </summary>
+        </member>
+        <member name="M:EduX_API.Repositories.AlunoTurmaRepository.Adicionar(EduX_API.Domains.AlunoTurma)">
+            <summary>
+            Adicionar um novo aluno
+            </summary>
+            <param name="alunoturma">Novo aluno</param>
+        </member>
+        <member name="M:EduX_API.Repositories.AlunoTurmaRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Encontrar um aluno pelo seu ID
+            </summary>
+            <param name="Id">Id do aluno</param>
+            <returns>Aluno encontrado</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.AlunoTurmaRepository.Editar(EduX_API.Domains.AlunoTurma)">
+            <summary>
+            Fazer uma alteração no cadastro do aluno
+            </summary>
+            <param name="alunoturma">Aluno alterado</param>
+        </member>
+        <member name="M:EduX_API.Repositories.AlunoTurmaRepository.Listar">
+            <summary>
+            Listar os alunos cadatrados
+            </summary>
+            <returns>Lista de alunos</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.AlunoTurmaRepository.Remover(System.Guid)">
+            <summary>
+            Remover um aluno
+            </summary>
+            <param name="Id">Id do aluno excluído</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ObjetivoAlunoRepository.Adicionar(EduX_API.Domains.ObjetivoAluno)">
+            <summary>
+            Adicionar um novo ObjetivoAluno
+            </summary>
+            <param name="objetivoaluno">Novo ObjetivoAluno</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ObjetivoAlunoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Buscar ObjetivoAluno por Id
+            </summary>
+            <param name="Id">Id procurado</param>
+            <returns>O ObjetivoAluno encontrado</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.ObjetivoAlunoRepository.Editar(EduX_API.Domains.ObjetivoAluno)">
+            <summary>
+            Alterar ObjetivoAluno
+            </summary>
+            <param name="objetivoaluno">ObjetivoAluno alterado</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ObjetivoAlunoRepository.Listar">
+            <summary>
+            Listar os ObjetivosAluno
+            </summary>
+            <returns>Lista de objetivos</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.ObjetivoAlunoRepository.Remover(System.Guid)">
+            <summary>
+            Remover um ObjetivoAluno
+            </summary>
+            <param name="Id">Id do ObjetivoAluno excluído</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ProfessorTurmaRepository.Adicionar(EduX_API.Domains.ProfessorTurma)">
+            <summary>
+            Adicionar um novo professor
+            </summary>
+            <param name="professorturma">Novo professor</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ProfessorTurmaRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Encontrar um professor pelo sua ID
+            </summary>
+            <param name="Id">Id do professor encontrado</param>
+            <returns></returns>
+        </member>
+        <member name="M:EduX_API.Repositories.ProfessorTurmaRepository.Editar(EduX_API.Domains.ProfessorTurma)">
+            <summary>
+            Alterar no cadastro do professor
+            </summary>
+            <param name="professorturma">Professor alterado</param>
+        </member>
+        <member name="M:EduX_API.Repositories.ProfessorTurmaRepository.Listar">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EduX_API.Repositories.ProfessorTurmaRepository.Remover(System.Guid)">
+            <summary>
+            Remover um professor
+            </summary>
+            <param name="Id">Id do professor excluído</param>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.Adicionar(EduX_API.Domains.Usuario)">
+            <summary>
+            Adicionar um novo usuário
+            </summary>
+            <param name="usuario">Novo suário</param>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Buscar o usuário pelo seu ID
+            </summary>
+            <param name="Id">Id do usuário a ser procurado</param>
+            <returns>Usuário encontrado</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.BuscarPorNome(System.String)">
+            <summary>
+            Buscar o usuário pelo seu Nome
+            </summary>
+            <param name="Nome">Nome do usuário a ser procurado</param>
+            <returns>Usuário encontrado</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.Editar(EduX_API.Domains.Usuario)">
+            <summary>
+            Fazer mudanças no usuário
+            </summary>
+            <param name="usuario">Usuário</param>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.Listar">
+            <summary>
+            Listar os usuários cadastrados
+            </summary>
+            <returns>Lista de usuários cadastrados</returns>
+        </member>
+        <member name="M:EduX_API.Repositories.UsuarioRepository.Remover(System.Guid)">
+            <summary>
+            Excluir um usuário cadastrado
+            </summary>
+            <param name="Id">Id do usuário excluído</param>
+        </member>
+    </members>
+</doc>

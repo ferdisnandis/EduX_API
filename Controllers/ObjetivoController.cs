@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EduX_API.Domains;
+﻿using EduX_API.Domains;
 using EduX_API.Interfaces;
 using EduX_API.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -108,10 +105,10 @@ namespace EduX_API.Controllers
                 if (objetivo1 == null)
                     return NotFound();
 
-                objetivo1.Id = Id;
-                _objetivoRepository.Editar(objetivo1);
+                objetivo.Id = Id;
+                _objetivoRepository.Editar(objetivo);
 
-                return Ok(objetivo1);
+                return Ok(objetivo);
             }
             catch (Exception ex)
             {

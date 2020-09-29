@@ -69,9 +69,9 @@ namespace EduX_API.Controllers
                 });
             }
         }
-        //Buscar por nome :)
+        //Buscar por nome
         [HttpGet]
-        public IActionResult GetByNome(Guid Id)
+        public IActionResult GetByNome()
         {
             try
             {
