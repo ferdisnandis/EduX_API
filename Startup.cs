@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using EduX_API.Dados;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace EduX_API
 {
@@ -27,7 +30,41 @@ namespace EduX_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                //Correção do erro object cycle
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                //Remover propriedades nulas
+                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            });
+
+            //Adicionamos as informações gerais da API
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "EduX API",
+                    Description = "Plataforma educacional em ASP.NER Core Web",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Equipe EduX",
+                        Email = "EduX@equipeSenai.com",
+                        Url = new Uri("https://twitter.com/EduX"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Open License",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+
+                //Comentários nos métodos
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +79,17 @@ namespace EduX_API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseStaticFiles();
+
+            //Usamos o swagger
+            app.UseSwagger();
+
+            //Configuramos o endpoint e descrição
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
 
             app.UseEndpoints(endpoints =>
             {

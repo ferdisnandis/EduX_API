@@ -33,16 +33,14 @@ namespace EduX_API.Repositories
 
         public Curtida BuscarPorId(Guid Id)
         {
-            Curtida curtida = null;
             try
             {
-                curtida = _ctx.Curtida.Find(Id);
+                return _ctx.Curtida.Find(Id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return curtida;
         }
         public List<Curtida> Listar()
         {

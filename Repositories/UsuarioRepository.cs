@@ -1,6 +1,7 @@
 ﻿using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,13 @@ namespace EduX_API.Repositories
         /// <summary>
         /// Adicionar um novo usuário
         /// </summary>
-        /// <param name="usuario1">Novo suário</param>
-        public void Adicionar(Usuario usuario1)
+        /// <param name="usuario">Novo suário</param>
+        public void Adicionar(Usuario usuario)
         {
             try
             {
                 //Adicionar aluno
-                _ctx.Usuario.Add(usuario1);
+                _ctx.Usuario.Add(usuario);
                 //SalvarAlterações
                 _ctx.SaveChanges();
             }
@@ -61,7 +62,15 @@ namespace EduX_API.Repositories
         /// <returns>Usuário encontrado</returns>
         public List<Usuario> BuscarPorNome(string Nome)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Usuario> usuario = _ctx.Usuario.Where(c => c.Nome.Contains(Nome)).ToList();
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
@@ -83,7 +92,6 @@ namespace EduX_API.Repositories
                 usuario1.Nome = usuario.Nome;
                 usuario1.Senha = usuario.Senha;
                 usuario1.Email = usuario.Email;
-                usuario1.Perfil = usuario.Perfil;
 
                 //Alterar
                 _ctx.Usuario.Update(usuario1);
@@ -104,7 +112,8 @@ namespace EduX_API.Repositories
             try
             {
                 //Retornar minha lista de usuários
-                return _ctx.Usuario.ToList();
+                List<Usuario> usuario = _ctx.Usuario.ToList();
+                return usuario;
             }
             catch(Exception ex)
             {
