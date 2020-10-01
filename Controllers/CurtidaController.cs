@@ -47,7 +47,7 @@ namespace EduX_API.Controllers
                 });
             }
         }
-        [HttpGet]
+        [HttpGet("{Id}")]
         public IActionResult Get(Guid Id)
         {
             try
@@ -73,7 +73,7 @@ namespace EduX_API.Controllers
 
             }
         }
-        [HttpGet]
+        [HttpGet("{GetByUsuario}")]
         public IActionResult GetByUsuario(Guid Id)
         {
             try
