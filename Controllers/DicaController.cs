@@ -20,6 +20,25 @@ namespace EduX_API.Controllers
         {
             _dicaRepository = new DicaRepository();
         }
+
+        [HttpPost]
+        public IActionResult Post([FromForm] Dica dica)
+        {
+            try
+            {
+                //Adicionar um aluno
+                _dicaRepository.Adicionar(dica);
+
+                //Retorna OK e as dicas
+                return Ok(dica);
+            }
+            catch (Exception ex)
+            {
+                //Caso ocorra um erro retorna uma mensagem de erro
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult Get()
         {

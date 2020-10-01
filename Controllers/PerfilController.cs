@@ -82,7 +82,7 @@ namespace EduX_API.Controllers
 
         // POST api/<PerfilController>
         [HttpPost]
-        public IActionResult Post(Perfil perfil)
+        public IActionResult Post([FromForm] Perfil perfil)
         {
             try
             {

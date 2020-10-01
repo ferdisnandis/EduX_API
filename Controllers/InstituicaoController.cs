@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using EduX_API.Domains;
@@ -137,6 +138,23 @@ namespace EduX_API.Controllers
             }
             catch (Exception ex)
             {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost]
+        public IActionResult Post([FromForm] Instituicao instituicao)
+        {
+            try
+            {
+                //Adicionar uma instituição
+                _instituicaoRepository.Adicionar(instituicao);
+
+                //Retorna OK e as instituições
+                return Ok(instituicao);
+            }
+            catch (Exception ex)
+            {
+                //Caso ocorra um erro retorna uma mensagem de erro
                 return BadRequest(ex.Message);
             }
         }
