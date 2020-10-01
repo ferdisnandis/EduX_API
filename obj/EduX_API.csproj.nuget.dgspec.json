@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\2S_2020_Sprint1_BancoDeDados\\Manha\\EduX_API\\EduX_API.csproj": {}
+    "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\EduX_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\2S_2020_Sprint1_BancoDeDados\\Manha\\EduX_API\\EduX_API.csproj": {
+    "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\EduX_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\2S_2020_Sprint1_BancoDeDados\\Manha\\EduX_API\\EduX_API.csproj",
+        "projectUniqueName": "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\EduX_API.csproj",
         "projectName": "EduX_API",
-        "projectPath": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\2S_2020_Sprint1_BancoDeDados\\Manha\\EduX_API\\EduX_API.csproj",
-        "packagesPath": "C:\\Users\\muril\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\2S_2020_Sprint1_BancoDeDados\\Manha\\EduX_API\\obj\\",
+        "projectPath": "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\EduX_API.csproj",
+        "packagesPath": "C:\\Users\\fernanda1234\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\muril\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fernanda1234\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,10 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
             },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
