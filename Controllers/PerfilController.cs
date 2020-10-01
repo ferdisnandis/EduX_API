@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EduX_API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PerfilController : ControllerBase
@@ -82,7 +82,7 @@ namespace EduX_API.Controllers
 
         // POST api/<PerfilController>
         [HttpPost]
-        public IActionResult Post([FromForm] Perfil perfil)
+        public IActionResult Post(Perfil perfil)
         {
             try
             {
