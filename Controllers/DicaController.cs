@@ -75,8 +75,8 @@ namespace EduX_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("{Id}")]
-        public IActionResult Uptade(Guid Id, Dica dica)
+        [HttpPost("{Id}")]
+        public IActionResult Update(Guid Id, Dica dica)
         {
             try
             {
