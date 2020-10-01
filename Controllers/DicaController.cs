@@ -45,7 +45,7 @@ namespace EduX_API.Controllers
                 });
             }
         }
-        [HttpGet]
+        [HttpGet("{Id}")]
         public IActionResult Get(Guid Id)
         {
             try

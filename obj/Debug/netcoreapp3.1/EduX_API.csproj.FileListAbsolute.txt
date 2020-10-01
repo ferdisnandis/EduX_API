@@ -157,3 +157,4 @@ C:\Users\fernanda1234\Desktop\EduX_API\bin\Debug\netcoreapp3.1\Microsoft.AspNetC
 C:\Users\fernanda1234\Desktop\EduX_API\obj\Debug\netcoreapp3.1\EduX_API.csproj.CoreCompileInputs.cache
 C:\Users\fernanda1234\Desktop\EduX_API\obj\Debug\netcoreapp3.1\EduX_API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\fernanda1234\Desktop\EduX_API\obj\Debug\netcoreapp3.1\EduX_API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\muril\OneDrive\Documentos\Projetos\2S_2020_Sprint1_BancoDeDados\Manha\EduX_API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

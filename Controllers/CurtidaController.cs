@@ -73,7 +73,7 @@ namespace EduX_API.Controllers
 
             }
         }
-        [HttpGet("{GetByUsuario}")]
+        [HttpGet("GetByUsuario/{Id}")]
         public IActionResult GetByUsuario(Guid Id)
         {
             try
