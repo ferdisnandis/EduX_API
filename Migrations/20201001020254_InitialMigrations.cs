@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EduX_API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,14 +98,15 @@ namespace EduX_API.Migrations
                     Senha = table.Column<string>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataUltimoAcesso = table.Column<DateTime>(nullable: false),
-                    IdPerfil = table.Column<Guid>(nullable: false)
+                    IdPerfil = table.Column<Guid>(nullable: false),
+                    UrlImagem = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Usuario_Perfil_Id",
-                        column: x => x.Id,
+                        name: "FK_Usuario_Perfil_IdPerfil",
+                        column: x => x.IdPerfil,
                         principalTable: "Perfil",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -276,6 +277,11 @@ namespace EduX_API.Migrations
                 name: "IX_Turma_IdCurso",
                 table: "Turma",
                 column: "IdCurso");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuario_IdPerfil",
+                table: "Usuario",
+                column: "IdPerfil");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

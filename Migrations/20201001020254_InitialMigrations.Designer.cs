@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduX_API.Migrations
 {
     [DbContext(typeof(EduXContext))]
-    [Migration("20200929223522_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201001020254_InitialMigrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -248,6 +248,7 @@ namespace EduX_API.Migrations
             modelBuilder.Entity("EduX_API.Domains.Usuario", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataCadastro")
@@ -271,7 +272,12 @@ namespace EduX_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UrlImagem")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
 
                     b.ToTable("Usuario");
                 });
@@ -380,7 +386,7 @@ namespace EduX_API.Migrations
                 {
                     b.HasOne("EduX_API.Domains.Perfil", "Perfil")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

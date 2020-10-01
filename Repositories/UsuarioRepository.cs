@@ -4,6 +4,7 @@ using EduX_API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +27,7 @@ namespace EduX_API.Repositories
         {
             try
             {
+                SalvarArquivo(usuario);
                 //Adicionar aluno
                 _ctx.Usuario.Add(usuario);
                 //SalvarAlterações
@@ -145,6 +147,20 @@ namespace EduX_API.Repositories
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public void SalvarArquivo(Usuario usuario)
+        {
+                if (usuario.Imagem != null)
+                {
+                    string path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images", usuario.Imagem.FileName);
+                    using (var stream = new FileStream(path , FileMode.Create))
+                    {
+                        usuario.Imagem.CopyTo(stream);
+                        usuario.UrlImagem = path;
+                    }
+                }
+            
         }
     }
 }

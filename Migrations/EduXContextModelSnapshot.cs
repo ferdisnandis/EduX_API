@@ -246,6 +246,7 @@ namespace EduX_API.Migrations
             modelBuilder.Entity("EduX_API.Domains.Usuario", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataCadastro")
@@ -269,7 +270,12 @@ namespace EduX_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UrlImagem")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
 
                     b.ToTable("Usuario");
                 });
@@ -378,7 +384,7 @@ namespace EduX_API.Migrations
                 {
                     b.HasOne("EduX_API.Domains.Perfil", "Perfil")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

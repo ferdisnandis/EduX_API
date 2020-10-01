@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,12 +22,15 @@ namespace EduX_API.Domains
         public DateTime DataCadastro { get; set; }
         public DateTime DataUltimoAcesso { get; set; }
 
-
         //FK : ID PERFIL
         public Guid IdPerfil { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdPerfil")]
         public Perfil Perfil { get; set; }
 
-       // public List<Curtida> Curtidas { get; set; }
+        [NotMapped]
+        public IFormFile Imagem { get; set; }
+        public string UrlImagem { get; set; }
+
+        // public List<Curtida> Curtidas { get; set; }
     }
 }
