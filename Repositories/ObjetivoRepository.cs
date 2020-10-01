@@ -20,6 +20,7 @@ namespace EduX_API.Repositories
         {
             try
             {
+                objetivo.SalvarArquivo(objetivo);
                 _ctx.Objetivo.Add(objetivo);
                 _ctx.SaveChanges();
             }

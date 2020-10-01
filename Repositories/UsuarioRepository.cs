@@ -26,8 +26,7 @@ namespace EduX_API.Repositories
         public void Adicionar(Usuario usuario)
         {
             try
-            {
-                SalvarArquivo(usuario);
+            { 
                 //Adicionar aluno
                 _ctx.Usuario.Add(usuario);
                 //SalvarAlterações
@@ -147,20 +146,6 @@ namespace EduX_API.Repositories
             {
                 throw new Exception(ex.Message);
             }
-        }
-
-        public void SalvarArquivo(Usuario usuario)
-        {
-                if (usuario.Imagem != null)
-                {
-                    string path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Images", usuario.Imagem.FileName);
-                    using (var stream = new FileStream(path , FileMode.Create))
-                    {
-                        usuario.Imagem.CopyTo(stream);
-                        usuario.UrlImagem = path;
-                    }
-                }
-            
         }
     }
 }
