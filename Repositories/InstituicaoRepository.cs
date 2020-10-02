@@ -73,7 +73,7 @@ namespace EduX_API.Repositories
                 InstituicaoContexto.Complemento = instituicao.Complemento;
                 InstituicaoContexto.Logradouro = instituicao.Logradouro;
                 InstituicaoContexto.Nome = instituicao.Nome;
-                InstituicaoContexto.Número = instituicao.Número;
+                InstituicaoContexto.Numero = instituicao.Numero;
                 InstituicaoContexto.UF = instituicao.UF;
                 _ctx.SaveChanges();
             }

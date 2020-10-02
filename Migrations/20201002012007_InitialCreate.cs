@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EduX_API.Migrations
 {
-    public partial class InitialMigrations : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace EduX_API.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(nullable: false),
                     Logradouro = table.Column<string>(nullable: false),
-                    Número = table.Column<int>(nullable: false),
+                    Numero = table.Column<int>(nullable: false),
                     Complemento = table.Column<string>(nullable: true),
                     Bairro = table.Column<string>(nullable: true),
                     Cidade = table.Column<string>(nullable: true),
@@ -56,14 +56,15 @@ namespace EduX_API.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Descricao = table.Column<string>(nullable: true),
-                    IdCategoria = table.Column<Guid>(nullable: false)
+                    IdCategoria = table.Column<Guid>(nullable: false),
+                    UrlImagem = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Objetivo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Objetivo_Categorias_Id",
-                        column: x => x.Id,
+                        name: "FK_Objetivo_Categorias_IdCategoria",
+                        column: x => x.IdCategoria,
                         principalTable: "Categorias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -81,8 +82,8 @@ namespace EduX_API.Migrations
                 {
                     table.PrimaryKey("PK_Curso", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Curso_Instituicao_Id",
-                        column: x => x.Id,
+                        name: "FK_Curso_Instituicao_IdInstituicao",
+                        column: x => x.IdInstituicao,
                         principalTable: "Instituicao",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -98,8 +99,7 @@ namespace EduX_API.Migrations
                     Senha = table.Column<string>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataUltimoAcesso = table.Column<DateTime>(nullable: false),
-                    IdPerfil = table.Column<Guid>(nullable: false),
-                    UrlImagem = table.Column<string>(nullable: true)
+                    IdPerfil = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -144,8 +144,8 @@ namespace EduX_API.Migrations
                 {
                     table.PrimaryKey("PK_Dica", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Dica_Usuario_Id",
-                        column: x => x.Id,
+                        name: "FK_Dica_Usuario_IdUsuario",
+                        column: x => x.IdUsuario,
                         principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -190,14 +190,14 @@ namespace EduX_API.Migrations
                 {
                     table.PrimaryKey("PK_ProfessorTurma", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfessorTurma_Turma_Id",
-                        column: x => x.Id,
+                        name: "FK_ProfessorTurma_Turma_IdTurma",
+                        column: x => x.IdTurma,
                         principalTable: "Turma",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessorTurma_Usuario_Id",
-                        column: x => x.Id,
+                        name: "FK_ProfessorTurma_Usuario_IdUsuario",
+                        column: x => x.IdUsuario,
                         principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -222,13 +222,13 @@ namespace EduX_API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Curtida_Dica_Id",
-                        column: x => x.Id,
+                        name: "FK_Curtida_Dica_IdDica",
+                        column: x => x.IdDica,
                         principalTable: "Dica",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Curtida_Usuario_Id",
-                        column: x => x.Id,
+                        name: "FK_Curtida_Usuario_IdUsuario",
+                        column: x => x.IdUsuario,
                         principalTable: "Usuario",
                         principalColumn: "Id");
                 });
@@ -247,13 +247,13 @@ namespace EduX_API.Migrations
                 {
                     table.PrimaryKey("PK_ObjetivoAluno", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ObjetivoAluno_AlunoTurma_Id",
-                        column: x => x.Id,
+                        name: "FK_ObjetivoAluno_AlunoTurma_IdAlunoTurma",
+                        column: x => x.IdAlunoTurma,
                         principalTable: "AlunoTurma",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ObjetivoAluno_Turma_Id",
-                        column: x => x.Id,
+                        name: "FK_ObjetivoAluno_Turma_IdTurma",
+                        column: x => x.IdTurma,
                         principalTable: "Turma",
                         principalColumn: "Id");
                 });
@@ -269,9 +269,54 @@ namespace EduX_API.Migrations
                 column: "IdUsuario");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Curso_IdInstituicao",
+                table: "Curso",
+                column: "IdInstituicao");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Curtida_DicaId",
                 table: "Curtida",
                 column: "DicaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Curtida_IdDica",
+                table: "Curtida",
+                column: "IdDica");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Curtida_IdUsuario",
+                table: "Curtida",
+                column: "IdUsuario");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Dica_IdUsuario",
+                table: "Dica",
+                column: "IdUsuario");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Objetivo_IdCategoria",
+                table: "Objetivo",
+                column: "IdCategoria");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetivoAluno_IdAlunoTurma",
+                table: "ObjetivoAluno",
+                column: "IdAlunoTurma");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetivoAluno_IdTurma",
+                table: "ObjetivoAluno",
+                column: "IdTurma");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProfessorTurma_IdTurma",
+                table: "ProfessorTurma",
+                column: "IdTurma");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProfessorTurma_IdUsuario",
+                table: "ProfessorTurma",
+                column: "IdUsuario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Turma_IdCurso",

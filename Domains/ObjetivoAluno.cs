@@ -15,11 +15,11 @@ namespace EduX_API.Domains
         //FK : ID ALUNO TURMA E ID OBJETIVO
 
         public Guid IdAlunoTurma { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdAlunoTurma")]
         public AlunoTurma AlunoTurma { get; set; }
 
         public Guid IdTurma { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdTurma")]
         public Turma Turma{ get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace EduX_API.Domains
         public string Nome { get; set; }
         [Required]
         public string Logradouro { get; set; }
-        public int Número { get; set; }
+        public int Numero { get; set; }
         public string Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }

@@ -12,12 +12,12 @@ namespace EduX_API.Domains
 
         //IdUsuario : FK
         public Guid IdUsuario { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; } 
 
         //IdDica : FK
         public Guid IdDica { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdDica")]
         public Dica Dica { get; set; }
 
     }

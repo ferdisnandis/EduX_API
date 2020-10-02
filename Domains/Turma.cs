@@ -7,7 +7,6 @@ namespace EduX_API.Domains
     public class Turma : BaseDomain
     {
 
-
         public string Descricao { get; set; }
 
         //FK : ID CURSO

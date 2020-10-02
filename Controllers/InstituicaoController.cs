@@ -96,7 +96,7 @@ namespace EduX_API.Controllers
             }
         }
         [HttpPut]
-        public IActionResult Put(Instituicao instituicao)
+        public IActionResult Put([FromBody] Instituicao instituicao)
         {
             try
             {
