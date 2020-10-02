@@ -111,8 +111,8 @@ namespace EduX_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut]
-        public IActionResult Put(Curtida curtida)
+        [HttpPost]
+        public IActionResult Post([FromForm] Curtida curtida)
         {
             try
             {

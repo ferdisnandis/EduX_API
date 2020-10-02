@@ -87,7 +87,7 @@ namespace EduX_API.Controllers
                 //Adicionar um aluno
                 _AlunoTurmaRepository.Adicionar(alunoTurma);
 
-                //Retorna OK e os usuários
+                //Retorna OK e os alunos
                 return Ok(alunoTurma);
             }
             catch (Exception ex)
