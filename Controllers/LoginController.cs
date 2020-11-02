@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EduX_API.Context;
 using EduX_API.Domains;
+using EduX_API.Utilis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,7 @@ namespace EduX_API.Controllers
         //arrumou p vc? aonda to tentando aqui
         private Usuario AuthenticateUser(Usuario login)
         {
+            login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
             return _context.Usuario.Include(a => a.Id).FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
         }
 
