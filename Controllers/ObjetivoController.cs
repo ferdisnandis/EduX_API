@@ -1,6 +1,7 @@
 ﻿using EduX_API.Domains;
 using EduX_API.Interfaces;
 using EduX_API.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 

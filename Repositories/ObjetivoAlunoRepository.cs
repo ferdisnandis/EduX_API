@@ -25,7 +25,8 @@ namespace EduX_API.Repositories
         public void Adicionar(ObjetivoAluno objetivoaluno)
         {
             try
-            {
+            {  
+                objetivoaluno.SalvarArquivo(objetivoaluno);
                 //Adiciona um ObjetivoAluno
                 _ctx.ObjetivoAluno.Add(objetivoaluno);
                 //Salvar mudanças

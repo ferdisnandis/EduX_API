@@ -135,5 +135,11 @@ namespace EduX_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("getImage/{id}")]
+        public IActionResult GetImage(Guid id)
+        {
+            ObjetivoAluno objetivoAluno =  _ObjetivoAlunoRepository.BuscarPorId(id);
+            return Ok(new Uri($"{Request.Scheme}://{Request.Host}{Request.PathBase}/{objetivoAluno.UrlImagem}"));
+        }
     }
 }
