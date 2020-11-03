@@ -21,5 +21,9 @@ namespace EduX_API.Domains
         public Guid IdTurma { get; set; }
         [ForeignKey("IdTurma")]
         public Turma Turma{ get; set; }
+
+        public Guid IdObjetivo { get; set; }
+        [ForeignKey("IdObjetivo")]
+        public Objetivo Objetivo { get; set; }
     }
 }

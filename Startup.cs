@@ -79,6 +79,13 @@ namespace EduX_API
                     }
                 });
 
+                services.AddCors(options =>
+                {
+                    options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+                });
+
                 //Comentários nos métodos
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -100,6 +107,8 @@ namespace EduX_API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
 
