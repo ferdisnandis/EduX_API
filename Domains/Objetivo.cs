@@ -37,7 +37,6 @@ namespace EduX_API.Domains
                     obj.UrlImagem = path;
                 }
             }
-
         }
 
     }

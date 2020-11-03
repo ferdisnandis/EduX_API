@@ -34,7 +34,7 @@ namespace EduX_API.Controllers
         }
         //Tem alguns erro ainda, mas tô vendo aqui
         //arrumou p vc? aonda to tentando aqui
-        private Usuario AuthenticateUser(Usuario login)
+        private Usuario AuthenticateUser(Login login)
         {
             login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
             return _context.Usuario.Include(a => a.Id).FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
@@ -72,7 +72,7 @@ namespace EduX_API.Controllers
         // ignorar a autenticação neste método, já que é ele quem fará isso
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login([FromBody] Usuario login)
+        public IActionResult Login([FromBody] Login login)
         {
             // Definimos logo de cara como não autorizado
             IActionResult response = Unauthorized();
