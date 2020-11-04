@@ -1,9 +1,11 @@
 ﻿using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace EduX_API.Repositories
@@ -73,7 +75,6 @@ namespace EduX_API.Repositories
 
                 //Dados que podem ser alterados
                 objetivoaluno1.Nota = objetivoaluno.Nota;
-                objetivoaluno1.Turma = objetivoaluno.Turma;
                 objetivoaluno1.DataAlcancado = objetivoaluno.DataAlcancado;
 
                 //Alterar
@@ -101,6 +102,29 @@ namespace EduX_API.Repositories
             }
             catch(Exception ex)
             {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<ObjetivoAluno> ListarObjetivoPorAluno(Guid IdAlunoTurma, bool isPendente)
+        {
+            try
+            {
+                if (isPendente)
+                {
+                    return _ctx.ObjetivoAluno
+                      .Include(obj => obj.AlunoTurma)
+                      .Include(obj => obj.Objetivo).ThenInclude(obj => obj.Categoria)
+                      .Where(obj => obj.IdAlunoTurma.Equals(IdAlunoTurma) && string.IsNullOrEmpty(obj.UrlImagem)).ToList();
+                }
+                return _ctx.ObjetivoAluno
+                       .Include(obj => obj.AlunoTurma)
+                       .Include(obj => obj.Objetivo).ThenInclude(obj => obj.Categoria)
+                       .Where(obj => obj.IdAlunoTurma.Equals(IdAlunoTurma) && !string.IsNullOrEmpty(obj.UrlImagem)).ToList();
+            }
+            catch (Exception ex)
+            {
+
                 throw new Exception(ex.Message);
             }
         }

@@ -198,10 +198,10 @@ namespace EduX_API.Migrations
                     b.Property<Guid>("IdAlunoTurma")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdTurma")
+                    b.Property<Guid>("IdObjetivo")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<float>("Nota")
+                    b.Property<float?>("Nota")
                         .HasColumnType("real");
 
                     b.Property<string>("UrlImagem")
@@ -211,7 +211,7 @@ namespace EduX_API.Migrations
 
                     b.HasIndex("IdAlunoTurma");
 
-                    b.HasIndex("IdTurma");
+                    b.HasIndex("IdObjetivo");
 
                     b.ToTable("ObjetivoAluno");
                 });
@@ -376,9 +376,9 @@ namespace EduX_API.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("EduX_API.Domains.Turma", "Turma")
+                    b.HasOne("EduX_API.Domains.Objetivo", "Objetivo")
                         .WithMany()
-                        .HasForeignKey("IdTurma")
+                        .HasForeignKey("IdObjetivo")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });

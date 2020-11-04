@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduX_API.Migrations
 {
     [DbContext(typeof(EduXContext))]
-    [Migration("20201002012007_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201104180905_NotNullNotaMigration")]
+    partial class NotNullNotaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -200,17 +200,20 @@ namespace EduX_API.Migrations
                     b.Property<Guid>("IdAlunoTurma")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdTurma")
+                    b.Property<Guid>("IdObjetivo")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<float>("Nota")
+                    b.Property<float?>("Nota")
                         .HasColumnType("real");
+
+                    b.Property<string>("UrlImagem")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdAlunoTurma");
 
-                    b.HasIndex("IdTurma");
+                    b.HasIndex("IdObjetivo");
 
                     b.ToTable("ObjetivoAluno");
                 });
@@ -375,9 +378,9 @@ namespace EduX_API.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("EduX_API.Domains.Turma", "Turma")
+                    b.HasOne("EduX_API.Domains.Objetivo", "Objetivo")
                         .WithMany()
-                        .HasForeignKey("IdTurma")
+                        .HasForeignKey("IdObjetivo")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });

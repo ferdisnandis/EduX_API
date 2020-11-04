@@ -1,4 +1,5 @@
-﻿using EduX_API.Domains;
+﻿using EduX_API.Controllers;
+using EduX_API.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace EduX_API.Interfaces
         void Adicionar(ObjetivoAluno objetivoaluno);
         void Editar(ObjetivoAluno objetivoaluno);
         void Remover(Guid Id);
+        List<ObjetivoAluno> ListarObjetivoPorAluno(Guid IdAlunoTurma, bool isPendente);
     }
 }

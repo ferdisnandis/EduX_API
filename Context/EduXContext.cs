@@ -52,7 +52,7 @@ namespace EduX_API.Context
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<ObjetivoAluno>()
-                .HasOne(obj => obj.Turma)
+                .HasOne(obj => obj.Objetivo)
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
         }

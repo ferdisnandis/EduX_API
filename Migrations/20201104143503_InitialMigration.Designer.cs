@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduX_API.Migrations
 {
     [DbContext(typeof(EduXContext))]
-    [Migration("20201103141655_ImagemObjetivoAluno")]
-    partial class ImagemObjetivoAluno
+    [Migration("20201104143503_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -200,7 +200,7 @@ namespace EduX_API.Migrations
                     b.Property<Guid>("IdAlunoTurma")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdTurma")
+                    b.Property<Guid>("IdObjetivo")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Nota")
@@ -213,7 +213,7 @@ namespace EduX_API.Migrations
 
                     b.HasIndex("IdAlunoTurma");
 
-                    b.HasIndex("IdTurma");
+                    b.HasIndex("IdObjetivo");
 
                     b.ToTable("ObjetivoAluno");
                 });
@@ -378,9 +378,9 @@ namespace EduX_API.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("EduX_API.Domains.Turma", "Turma")
+                    b.HasOne("EduX_API.Domains.Objetivo", "Objetivo")
                         .WithMany()
-                        .HasForeignKey("IdTurma")
+                        .HasForeignKey("IdObjetivo")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });

@@ -11,7 +11,7 @@ namespace EduX_API.Domains
 {
     public class ObjetivoAluno : BaseDomain
     {
-        public float Nota { get; set; }
+        public float? Nota { get; set; }
         public DateTime DataAlcancado { get; set; }
 
         //FK : ID ALUNO TURMA E ID OBJETIVO
@@ -19,11 +19,9 @@ namespace EduX_API.Domains
         public Guid IdAlunoTurma { get; set; }
         [ForeignKey("IdAlunoTurma")]
         public AlunoTurma AlunoTurma { get; set; }
-
-        public Guid IdTurma { get; set; }
-        [ForeignKey("IdTurma")]
-        public Turma Turma{ get; set; }
-
+        public Guid IdObjetivo { get; set; }
+        [ForeignKey("IdObjetivo")]
+        public Objetivo Objetivo { get; set; }
         [NotMapped]
         public IFormFile Imagem { get; set; }
         public string UrlImagem { get; set; }

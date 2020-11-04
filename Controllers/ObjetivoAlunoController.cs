@@ -141,5 +141,17 @@ namespace EduX_API.Controllers
             ObjetivoAluno objetivoAluno =  _ObjetivoAlunoRepository.BuscarPorId(id);
             return Ok(new Uri($"{Request.Scheme}://{Request.Host}{Request.PathBase}/{objetivoAluno.UrlImagem}"));
         }
+        [HttpGet("ListarObjetivosPorAluno/{IdAlunoTurma}/{isPendente}")]
+        public IActionResult ListarObjetivosPorAluno(Guid IdAlunoTurma, bool isPendente)
+        {
+            try
+            {
+                return Ok(_ObjetivoAlunoRepository.ListarObjetivoPorAluno(IdAlunoTurma, isPendente));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EduX_API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -241,7 +241,8 @@ namespace EduX_API.Migrations
                     Nota = table.Column<float>(nullable: false),
                     DataAlcancado = table.Column<DateTime>(nullable: false),
                     IdAlunoTurma = table.Column<Guid>(nullable: false),
-                    IdTurma = table.Column<Guid>(nullable: false)
+                    IdObjetivo = table.Column<Guid>(nullable: false),
+                    UrlImagem = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -252,9 +253,9 @@ namespace EduX_API.Migrations
                         principalTable: "AlunoTurma",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ObjetivoAluno_Turma_IdTurma",
-                        column: x => x.IdTurma,
-                        principalTable: "Turma",
+                        name: "FK_ObjetivoAluno_Objetivo_IdObjetivo",
+                        column: x => x.IdObjetivo,
+                        principalTable: "Objetivo",
                         principalColumn: "Id");
                 });
 
@@ -304,9 +305,9 @@ namespace EduX_API.Migrations
                 column: "IdAlunoTurma");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ObjetivoAluno_IdTurma",
+                name: "IX_ObjetivoAluno_IdObjetivo",
                 table: "ObjetivoAluno",
-                column: "IdTurma");
+                column: "IdObjetivo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProfessorTurma_IdTurma",
@@ -335,9 +336,6 @@ namespace EduX_API.Migrations
                 name: "Curtida");
 
             migrationBuilder.DropTable(
-                name: "Objetivo");
-
-            migrationBuilder.DropTable(
                 name: "ObjetivoAluno");
 
             migrationBuilder.DropTable(
@@ -347,16 +345,19 @@ namespace EduX_API.Migrations
                 name: "Dica");
 
             migrationBuilder.DropTable(
-                name: "Categorias");
+                name: "AlunoTurma");
 
             migrationBuilder.DropTable(
-                name: "AlunoTurma");
+                name: "Objetivo");
 
             migrationBuilder.DropTable(
                 name: "Turma");
 
             migrationBuilder.DropTable(
                 name: "Usuario");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
 
             migrationBuilder.DropTable(
                 name: "Curso");
