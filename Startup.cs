@@ -104,7 +104,7 @@ namespace EduX_API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
