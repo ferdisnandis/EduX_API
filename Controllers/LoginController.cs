@@ -32,8 +32,7 @@ namespace EduX_API.Controllers
         {
             _config = config;
         }
-        //Tem alguns erro ainda, mas tô vendo aqui
-        //arrumou p vc? aonda to tentando aqui
+
         private Usuario AuthenticateUser(Login login)
         {
             login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
@@ -52,7 +51,9 @@ namespace EduX_API.Controllers
             new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),
             new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, userInfo.IdPerfil.ToString())
+            new Claim(ClaimTypes.Role, userInfo.IdPerfil.ToString()),
+            new Claim("role", userInfo.IdPerfil.ToString())
+ 
             };
 
             // Configuramos nosso Token e seu tempo de vida

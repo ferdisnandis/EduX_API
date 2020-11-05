@@ -25,7 +25,7 @@ namespace EduX_API
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            new PopularTable();
+           new PopularTable();
         }
 
         public IConfiguration Configuration { get; }
