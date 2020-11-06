@@ -27,19 +27,21 @@ namespace EduX_API.Domains
         public string UrlImagem { get; set; }
 
 
-        public void SalvarArquivo(ObjetivoAluno obja)
+        public string SalvarArquivo(ObjetivoAluno obja)
         {
+            string url = null;
             if (obja.Imagem != null)
             {
-                string fileName = Guid.NewGuid().ToString();
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(obja.Imagem.FileName);
                 string directory = "Images";
                 string path = Path.Combine(System.IO.Directory.GetCurrentDirectory(), directory, fileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     obja.Imagem.CopyTo(stream);
-                    obja.UrlImagem = directory + "/" + fileName;
+                    url = "http://localhost:64557/" + directory + "/" + fileName;
                 }
             }
+            return url;
 
         }
     }

@@ -28,7 +28,7 @@ namespace EduX_API.Repositories
         {
             try
             {  
-                objetivoaluno.SalvarArquivo(objetivoaluno);
+                objetivoaluno.UrlImagem = objetivoaluno.SalvarArquivo(objetivoaluno);
                 //Adiciona um ObjetivoAluno
                 _ctx.ObjetivoAluno.Add(objetivoaluno);
                 //Salvar mudanças
