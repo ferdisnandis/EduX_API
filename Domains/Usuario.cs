@@ -27,9 +27,9 @@ namespace EduX_API.Domains
         [ForeignKey("IdPerfil")]
         public Perfil Perfil { get; set; }
 
-       // [NotMapped]
-       // public IFormFile Imagem { get; set; }
-      //  public string UrlImagem { get; set; }
+        // [NotMapped]
+        // public IFormFile Imagem { get; set; }
+        //  public string UrlImagem { get; set; }
 
         // public List<Curtida> Curtidas { get; set; }
     }
