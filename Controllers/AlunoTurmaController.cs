@@ -135,5 +135,17 @@ namespace EduX_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("GetByEmail/{Email}")]
+        public IActionResult GetByEmail(string Email){
+            try
+            {
+                return Ok(_AlunoTurmaRepository.GetByEmail(Email));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

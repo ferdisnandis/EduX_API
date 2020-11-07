@@ -13,5 +13,6 @@ namespace EduX_API.Interfaces
         void Adicionar(AlunoTurma alunoturma);
         void Editar(AlunoTurma alunoturma);
         void Remover(Guid Id);
+        AlunoTurma GetByEmail(string Email);
     }
 }

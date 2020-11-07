@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Utilis;
@@ -22,7 +21,7 @@ namespace EduX_API.Controllers
     public class LoginController : ControllerBase
     {
         //Chamamos o contexto do banco
-        EduXContext _context = new EduXContext();
+        EduXContext _context;
 
         // Definimos uma variável para percorrer nossos métodos com as configurações obtidas no appsettings.json
         private IConfiguration _config;
@@ -31,12 +30,16 @@ namespace EduX_API.Controllers
         public LoginController(IConfiguration config)
         {
             _config = config;
+            _context = new EduXContext();
         }
 
         private Usuario AuthenticateUser(Login login)
         {
             login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
-            return _context.Usuario.Include(a => a.Id).FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
+            return _context.Usuario
+                .Include(u => u.Perfil)
+                .Where(u => u.Email == login.Email && u.Senha == login.Senha)
+                .FirstOrDefault();
         }
 
         // Criamos nosso método que vai gerar nosso Token
@@ -52,8 +55,8 @@ namespace EduX_API.Controllers
             new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(ClaimTypes.Role, userInfo.IdPerfil.ToString()),
-            new Claim("role", userInfo.IdPerfil.ToString())
- 
+            new Claim("role", userInfo.IdPerfil.ToString()),
+            new Claim("permissao", userInfo.Perfil.Permissao)
             };
 
             // Configuramos nosso Token e seu tempo de vida

@@ -99,7 +99,7 @@ namespace EduX_API.Controllers
 
         // PUT api/<ObjetivoAlunoController>/
         [HttpPut("{id}")]
-        public IActionResult Put(Guid Id, ObjetivoAluno objetivoAluno)
+        public IActionResult Put(Guid Id, [FromForm] ObjetivoAluno objetivoAluno)
         {
             try
             {

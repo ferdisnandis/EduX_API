@@ -4,6 +4,7 @@ using EduX_API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace EduX_API.Repositories
 {
@@ -124,6 +125,29 @@ namespace EduX_API.Repositories
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+        public AlunoTurma GetByEmail(string Email)
+        {
+            try
+            {
+                var query = from al in _ctx.AlunoTurma
+                            join user in _ctx.Usuario
+                            on al.IdUsuario equals user.Id
+                            where user.Email.Equals(Email)
+                            select new AlunoTurma
+                            {
+                                Id = al.Id,
+                                IdUsuario = al.IdUsuario,
+                                IdTurma = al.IdTurma
+                                
+                            };
+                return query.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

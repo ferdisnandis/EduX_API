@@ -28,7 +28,6 @@ namespace EduX_API.Repositories
         {
             try
             {  
-                objetivoaluno.UrlImagem = objetivoaluno.SalvarArquivo(objetivoaluno);
                 //Adiciona um ObjetivoAluno
                 _ctx.ObjetivoAluno.Add(objetivoaluno);
                 //Salvar mudanças
@@ -67,18 +66,22 @@ namespace EduX_API.Repositories
             try
             {
                 //Buscar objetivo aluno pelo Id
-                ObjetivoAluno objetivoaluno1 = BuscarPorId(objetivoaluno.Id);
+                ObjetivoAluno objetivoAlunoLoaded = BuscarPorId(objetivoaluno.Id);
 
                 //Verifica se existe (ou não)
-                if (objetivoaluno1 == null)
+                if (objetivoAlunoLoaded == null)
                     throw new Exception("ObjetivoAluno não encontrado");
 
                 //Dados que podem ser alterados
-                objetivoaluno1.Nota = objetivoaluno.Nota;
-                objetivoaluno1.DataAlcancado = objetivoaluno.DataAlcancado;
+                if (objetivoaluno.Nota != null)
+                {
+                    objetivoAlunoLoaded.Nota = objetivoaluno.Nota;
+                    objetivoAlunoLoaded.DataAlcancado = DateTime.Now;
+                }
+                objetivoAlunoLoaded.UrlImagem = objetivoaluno.SalvarArquivo(objetivoaluno);
 
                 //Alterar
-                _ctx.ObjetivoAluno.Update(objetivoaluno1);
+                _ctx.ObjetivoAluno.Update(objetivoAlunoLoaded);
 
                 //Salvar
                 _ctx.SaveChanges();
