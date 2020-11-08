@@ -52,6 +52,7 @@ namespace EduX_API.Controllers
             // a qualquer momento enquanto o Token for ativo
             var claims = new[] {
             new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),
+            new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(ClaimTypes.Role, userInfo.IdPerfil.ToString()),

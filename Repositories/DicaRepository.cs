@@ -4,6 +4,7 @@ using EduX_API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace EduX_API.Repositories
@@ -68,8 +69,20 @@ namespace EduX_API.Repositories
         {
             try
             {
-                return _ctx.Dica.ToList();
+                var dicas = (from dica in _ctx.Dica join user in _ctx.Usuario on dica.IdUsuario equals user.Id
+                        select new Dica
+                        {
+                            Id = dica.Id,
+                            Texto = dica.Texto,
+                            Usuario = dica.Usuario,
+                            TotalCurtidas = 0
+                        }).ToList();
+                foreach (var item in dicas)
+                {
+                    item.TotalCurtidas = _ctx.Curtida.Count(c => c.IdDica.Equals(item.Id));
+                }
 
+                return dicas;
             }
             catch (Exception ex)
             {

@@ -15,16 +15,14 @@ namespace EduX_API.Domains
         [Column(TypeName = "varchar(255)")]
         public string Imagem { get; set; }
 
-        public Dica()
-        {
-            Id = Guid.NewGuid();
-        }
-
         //IdUsuario : FK
         public Guid IdUsuario { get; set; }
         [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
 
         public List<Curtida> Curtidas { get; set; }
+
+        [NotMapped]
+        public int TotalCurtidas { get; set; }
     }
 }
