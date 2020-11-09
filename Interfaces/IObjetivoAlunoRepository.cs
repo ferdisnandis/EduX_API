@@ -15,5 +15,6 @@ namespace EduX_API.Interfaces
         void Editar(ObjetivoAluno objetivoaluno);
         void Remover(Guid Id);
         List<ObjetivoAluno> ListarObjetivoPorAluno(Guid IdAlunoTurma, bool isPendente);
+        object Ranking();
     }
 }

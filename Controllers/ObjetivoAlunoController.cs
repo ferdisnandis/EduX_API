@@ -153,5 +153,18 @@ namespace EduX_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("Ranking")]
+        public IActionResult Ranking()
+        {
+            try
+            {
+                return Ok(_ObjetivoAlunoRepository.Ranking());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
     }
 }

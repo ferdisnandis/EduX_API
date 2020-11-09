@@ -1,11 +1,13 @@
 ﻿using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace EduX_API.Repositories
@@ -155,6 +157,52 @@ namespace EduX_API.Repositories
             {
                 throw new Exception(ex.Message);
             } 
+        }
+        public object Ranking()
+        {
+            try
+            {
+                var queryAlunoTurma = (from al in _ctx.AlunoTurma
+                                       join user in _ctx.Usuario on al.IdUsuario equals user.Id
+                                       select new
+                                       {
+                                           idusuario = user.Id,
+                                           idAlunoTurma = al.Id,
+                                           nome = user.Nome
+                                       }).ToList();
+
+                var queryRanking = (from obja in _ctx.ObjetivoAluno
+                                    group new { obja.Id, obja.IdAlunoTurma, obja.Nota } by obja.IdAlunoTurma into g
+                                    select new
+                                    {
+                                        idAlunoTuma = g.Key,
+                                        media = g.Average(o => o.Nota).HasValue ? g.Average(o => o.Nota) : 0
+                                    } into r orderby r.media descending
+                                      select new
+                                      {
+                                          idAlunoTuma = r.idAlunoTuma,
+                                          media = r.media
+                                      }
+                                      ).Take(3).ToList();
+                List<object> results = new List<object>();
+                foreach (var item in queryRanking)
+                {
+                    var al = queryAlunoTurma.Find(al => al.idAlunoTurma.Equals(item.idAlunoTuma));
+                    results.Add(new {
+                        idUsuario = al.idusuario,
+                        idAlunoTurma = al.idAlunoTurma,
+                        nome = al.nome,
+                        media = item.media
+                    });
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
