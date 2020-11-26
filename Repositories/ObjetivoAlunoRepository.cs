@@ -103,7 +103,7 @@ namespace EduX_API.Repositories
             try
             {
                 //Retornar minha lista de ObjetivoAluno
-                return _ctx.ObjetivoAluno.ToList();
+                return _ctx.ObjetivoAluno.Include(c => c.AlunoTurma.Usuario).Include(c => c.Objetivo).ToList();
             }
             catch(Exception ex)
             {

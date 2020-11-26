@@ -80,7 +80,7 @@ namespace EduX_API.Controllers
 
         // POST api/<CategoriaController>
         [HttpPost]
-        public IActionResult Post([FromForm] Categoria categoria)
+        public IActionResult Post([FromBody] Categoria categoria)
         {
             try
             {

@@ -80,7 +80,7 @@ namespace EduX_API.Controllers
 
         // POST api/<ProfessorTurmaController>
         [HttpPost]
-        public IActionResult Post([FromForm] ProfessorTurma professorTurma)
+        public IActionResult Post([FromBody] ProfessorTurma professorTurma)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace EduX_API.Controllers
                 if (ProfTurma == null)
                     return NotFound();
 
-                ProfTurma.Id = Id;
+                professorTurma.Id = Id;
                 _ProfessorTurmaRepository.Editar(professorTurma);
 
                 return Ok(professorTurma);

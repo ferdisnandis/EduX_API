@@ -81,7 +81,7 @@ namespace EduX_API.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost]
-        public IActionResult Post([FromForm] Usuario usuario)
+        public IActionResult Post([FromBody] Usuario usuario)
         {
             //Criptografar a senha 
             //SALT - será as 5 primeiras letras do e-mail do usuário
@@ -105,7 +105,7 @@ namespace EduX_API.Controllers
 
         // PUT api/<UsuarioController>/
         [HttpPut("{id}")]
-        public IActionResult Put(Guid Id, [FromForm]Usuario usuario)
+        public IActionResult Put(Guid Id, [FromBody]Usuario usuario)
         {
             try
             {

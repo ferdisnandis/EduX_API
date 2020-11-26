@@ -78,7 +78,7 @@ namespace EduX_API.Controllers
 
         // POST api/<ObjetivoController>
         [HttpPost]
-        public IActionResult Post([FromForm] Objetivo objetivo)
+        public IActionResult Post([FromBody] Objetivo objetivo)
         {
             try
             {

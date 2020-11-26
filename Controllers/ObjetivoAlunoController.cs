@@ -80,7 +80,7 @@ namespace EduX_API.Controllers
 
         // POST api/<ObjetivoAlunoController>
         [HttpPost]
-        public IActionResult Post([FromForm] ObjetivoAluno objetivoAluno)
+        public IActionResult Post([FromBody] ObjetivoAluno objetivoAluno)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace EduX_API.Controllers
 
         // PUT api/<ObjetivoAlunoController>/
         [HttpPut("{id}")]
-        public IActionResult Put(Guid Id, [FromForm] ObjetivoAluno objetivoAluno)
+        public IActionResult Put(Guid Id, [FromBody] ObjetivoAluno objetivoAluno)
         {
             try
             {

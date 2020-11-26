@@ -2,6 +2,7 @@
 using EduX_API.Domains;
 using EduX_API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -113,7 +114,7 @@ namespace EduX_API.Repositories
             try
             {
                 //Retornar minha lista de usuários
-                List<Usuario> usuario = _ctx.Usuario.ToList();
+                List<Usuario> usuario = _ctx.Usuario.Include(c => c.Perfil).ToList();
                 return usuario;
             }
             catch(Exception ex)

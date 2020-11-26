@@ -1,6 +1,7 @@
 ﻿using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,7 +95,7 @@ namespace EduX_API.Repositories
             try 
             {
                 //Retornar minha lista de alunos
-                return _ctx.AlunoTurma.ToList();
+                return _ctx.AlunoTurma.Include(c => c.Turma).Include(c => c.Usuario).ToList();
             }
             catch(Exception ex)
             {

@@ -2,6 +2,7 @@
 using EduX_API.Domains;
 using EduX_API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace EduX_API.Repositories
             try
             {
                 //Busca o Id do professor
-                ProfessorTurma professorturma1 = BuscarPorId(professorturma.Id);
+                ProfessorTurma professorturma1 = _ctx.ProfessorTurma.Find(professorturma.Id);
 
                 //Verifica se o professor está no sistema (ou não)
                 if (professorturma1 == null)
@@ -67,6 +68,9 @@ namespace EduX_API.Repositories
                 professorturma1.Descricao = professorturma.Descricao;
                 professorturma1.Turma = professorturma.Turma;
                 professorturma1.Usuario = professorturma.Usuario;
+
+                _ctx.ProfessorTurma.Update(professorturma1);
+                _ctx.SaveChanges();
             }
             catch(Exception ex)
             {
@@ -83,7 +87,7 @@ namespace EduX_API.Repositories
             try
             {
                 //Retornar minha lista de professores
-                return _ctx.ProfessorTurma.ToList();
+                return _ctx.ProfessorTurma.Include(c => c.Turma).Include(c => c.Usuario).ToList();
             }
             catch(Exception ex)
             {

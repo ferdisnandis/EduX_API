@@ -80,7 +80,7 @@ namespace EduX_API.Controllers
 
         // POST api/<AlunoTurmaController>
         [HttpPost]
-        public IActionResult Post([FromForm] AlunoTurma alunoTurma)
+        public IActionResult Post([FromBody] AlunoTurma alunoTurma)
         {
             try
             {
