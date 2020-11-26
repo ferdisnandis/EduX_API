@@ -81,7 +81,7 @@ namespace EduX_API.Controllers
 
         // POST api/<TurmaController>
         [HttpPost]
-        public IActionResult Post([FromForm] Turma turma)
+        public IActionResult Post([FromBody] Turma turma)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace EduX_API.Controllers
                 if (turmaTemp == null)
                     return NotFound();
 
-                turmaTemp.Id = Id;
+                turma.Id = Id;
                 _turmaRepository.Editar(turma);
 
                 return Ok(turma);

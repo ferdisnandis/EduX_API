@@ -1,6 +1,7 @@
 ﻿using EduX_API.Context;
 using EduX_API.Domains;
 using EduX_API.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace EduX_API.Repositories
         {
             try
             {
-                return _ctx.Curso.ToList();
+                return _ctx.Curso.Include(c => c.Instituicao).ToList();
             }
             catch (Exception ex)
             {
