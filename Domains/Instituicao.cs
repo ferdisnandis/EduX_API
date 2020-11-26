@@ -8,7 +8,7 @@ namespace EduX_API.Domains
 {
     public class Instituicao : BaseDomain
     {
-        
+
         [Required]
         public string Nome { get; set; }
         [Required]

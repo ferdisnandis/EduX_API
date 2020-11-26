@@ -81,7 +81,7 @@ namespace EduX_API.Repositories
             {
                 Curso curso1 = _ctx.Curso.Find(Id);
                 if (curso1 == null)
-                    throw new Exception("Curso removido com sucesso>");
+                    throw new Exception("Curso removido com sucesso");
                 _ctx.Curso.Remove(curso1);
                 _ctx.SaveChanges();
             }

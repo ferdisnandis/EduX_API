@@ -80,7 +80,7 @@ namespace EduX_API.Controllers
 
         // POST api/<CursoController>
         [HttpPost]
-        public IActionResult Post([FromForm] Curso curso)
+        public IActionResult Post([FromBody] Curso curso)
         {
             try
             {
@@ -106,8 +106,9 @@ namespace EduX_API.Controllers
                 var cursoTemp = _cursoRepository.BuscarPorId(Id);
 
                 if (cursoTemp == null)
+                {
                     return NotFound();
-
+                }
                 curso.Id = Id;
                 _cursoRepository.Editar(curso);
 

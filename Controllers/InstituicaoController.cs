@@ -133,6 +133,7 @@ namespace EduX_API.Controllers
                 {
                     return NotFound();
                 }
+                instituicao.Id = Id;
                 _instituicaoRepository.Editar(instituicao);
                 return Ok(instituicao);
             }
@@ -142,7 +143,7 @@ namespace EduX_API.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Post([FromForm] Instituicao instituicao)
+        public IActionResult Post([FromBody] Instituicao instituicao)
         {
             try
             {
