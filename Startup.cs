@@ -36,10 +36,9 @@ namespace EduX_API
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.WithOrigins("http://localhost:3000")
+                    builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
             });
             services.AddMvc();
             // JWT
@@ -90,7 +89,7 @@ namespace EduX_API
 
                 services.AddCors(options =>
                 {
-                    options.AddPolicy("CorsPolicy", builder => builder
+                    options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
                 });
@@ -123,8 +122,6 @@ namespace EduX_API
             });
 
             app.UseAuthentication();
-
-            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
 

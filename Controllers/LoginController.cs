@@ -35,7 +35,7 @@ namespace EduX_API.Controllers
 
         private Usuario AuthenticateUser(Login login)
         {
-            login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
+        
             return _context.Usuario
                 .Include(u => u.Perfil)
                 .Where(u => u.Email == login.Email && u.Senha == login.Senha)
@@ -79,7 +79,7 @@ namespace EduX_API.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] Login login)
         {
-            // Definimos logo de cara como não autorizado
+            // Definimos primeiro como não autorizado
             IActionResult response = Unauthorized();
 
             // Autenticamos o usuário da API
@@ -87,6 +87,7 @@ namespace EduX_API.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
+                login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 5));
                 response = Ok(new { token = tokenString });
             }
 
