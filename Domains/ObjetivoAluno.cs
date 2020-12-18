@@ -38,6 +38,7 @@ namespace EduX_API.Domains
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     obja.Imagem.CopyTo(stream);
+        
                     url = "http://localhost:64557/" + directory + "/" + fileName;
                 }
             }

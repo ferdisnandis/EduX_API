@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w9eDMlJghGj5chnVDN94VFZVgvgF5w4XHwny3W19miQgpmapR9DobSATCH9FcGAMkqrEmP9235ri+FzgceEHAg==",
+  "dgSpecHash": "ZhbfeyuuoQ77icRuvPDKgY1br+JpfL20pg2qCCFeFhHgOKBw80mK6gchdWi2xIvWIixl78bDVLWuQL3Toifu7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fernanda1234\\Desktop\\EduX_API\\EduX_API.csproj",
+  "projectFilePath": "C:\\Users\\fernanda1234\\Desktop\\PROJETO - EDUX\\EduX_API\\EduX_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fernanda1234\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\fernanda1234\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
