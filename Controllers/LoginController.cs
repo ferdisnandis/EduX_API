@@ -35,7 +35,7 @@ namespace EduX_API.Controllers
 
         private Usuario AuthenticateUser(Login login)
         {
-        
+
             return _context.Usuario
                 .Include(u => u.Perfil)
                 .Where(u => u.Email == login.Email && u.Senha == login.Senha)

@@ -7180,19 +7180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fernanda1234\\.nuget\\packages\\": {}
+    "C:\\Users\\muril\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fernanda1234\\Desktop\\PROJETO - EDUX\\EduX_API\\EduX_API.csproj",
+      "projectUniqueName": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\Edux_API\\EduX_API\\EduX_API.csproj",
       "projectName": "EduX_API",
-      "projectPath": "C:\\Users\\fernanda1234\\Desktop\\PROJETO - EDUX\\EduX_API\\EduX_API.csproj",
-      "packagesPath": "C:\\Users\\fernanda1234\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fernanda1234\\Desktop\\PROJETO - EDUX\\EduX_API\\obj\\",
+      "projectPath": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\Edux_API\\EduX_API\\EduX_API.csproj",
+      "packagesPath": "C:\\Users\\muril\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\muril\\OneDrive\\Documentos\\Projetos\\Edux_API\\EduX_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fernanda1234\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\muril\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7204,6 +7204,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -7215,6 +7216,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "EntityFramework": {
             "target": "Package",
@@ -7279,7 +7281,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
